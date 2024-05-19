@@ -5,7 +5,7 @@
 #include <cctype>       // std::tolower
 
 bool comp_case_insensitive (char c1, char c2) {
-  return (std::tolower(c1)==std::tolower(c2));
+  return (c1==std::tolower(c2));
 }
 
 int main () {
@@ -13,20 +13,20 @@ int main () {
   std::vector<char> haystack (mychars,mychars+6);
   std::vector<char>::iterator it;
 
-  int needle[] = {'A','B','C'};
+  int needle[] = {'x','y'};
 
   // using default comparison:
-  it = find_first_of (haystack.begin(), haystack.end(), needle, needle+3);
+  it = find_first_of (haystack.begin(), haystack.end(), needle, needle+2);
 
   if (it!=haystack.end())
-    std::cout << "The first match is: " << *it << '\n';
+    std::cout << "The first match is: " << it-haystack.begin() << *it << '\n';
 
   // using predicate comparison:
   it = find_first_of (haystack.begin(), haystack.end(),
-                      needle, needle+3, comp_case_insensitive);
+                      needle, needle+2, comp_case_insensitive);
 
   if (it!=haystack.end())
-    std::cout << "The first match is: " << *it << '\n';
+    std::cout << "The first match is: "<< it-haystack.begin() << *it << '\n';
 
   return 0;
 }
