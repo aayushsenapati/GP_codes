@@ -52,6 +52,6 @@ main()
 	Student s;
 	s.set_s();
 	s.display_s();
-	s.display_p();  // Not accessible in the child class
+	// s.display_p();  // Not accessible in the child class
 	return 0;
 }

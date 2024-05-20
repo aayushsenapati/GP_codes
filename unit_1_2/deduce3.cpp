@@ -9,7 +9,7 @@ void g3(int, int, int) { };
 void g3(float, int) { };
 
 int main() {
-//   f(&g1);
-//   f(&g2);
+//   f<int>(&g1);
+  f<float>(&g2);
    f(&g3);
 }

@@ -6,10 +6,13 @@ using namespace std;
 
 class Base {
 public:
+	int a;
+	Base(){
+		 a = 10;
+		cout << "In base class" << endl;
+	}
 	// pure virtual function
-	virtual void show(){
-		cout << "In \n";
-	};
+	virtual void show() = 0;
 };
 
 class Derived : public Base {
@@ -22,7 +25,9 @@ int main()
 {
 	// creating a pointer of type Base pointing to an object
 	// of type Derived
-	Base* bp = new Derived();
+	
+	Base& bp = *new Derived();
+	bp.show();
 
 	// calling the show() function using the pointer
 	//bp->show();

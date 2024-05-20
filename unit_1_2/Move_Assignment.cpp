@@ -64,14 +64,17 @@ Test getTest()
 
 int main ()
 {
-	vector <Test> vec;
-  	cout << "Before push_back" << endl;
-	vec.push_back (Test ());
-        cout << "After push_back" << endl;
-	Test test = getTest ();
-	Test test1;
-        cout << "Before test1 is assigned the return value" << endl;
-	test1 = getTest ();    // results in move assignment being called
+	int n = 5;
+	int& a = n;
+	cout << typeid(a).name() << endl;
+	// vector <Test> vec;
+  	// cout << "Before push_back" << endl;
+	// vec.push_back (Test ());
+    //     cout << "After push_back" << endl;
+	// Test test = getTest ();
+	// Test test1;
+    //     cout << "Before test1 is assigned the return value" << endl;
+	// test1 = getTest ();    // results in move assignment being called
 	return 0;
 }		 
 	

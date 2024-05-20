@@ -5,13 +5,20 @@ using namespace std;
 
 class base {
 public:
-	virtual void print() { cout << "print base class\n"; }
 
+	void operator=(const base& d){
+		cout << "In operator="<< endl;
+		a = d.a;
+	}
+	
+	int a;
+	 void print() { cout << "print base class\n"; }
 	void show() { cout << "show base class\n"; }
 };
 
 class derived : public base {
 public:
+	
 	void print() { cout << "print derived class\n"; }
 
 	void show() { cout << "show derived class\n"; }
@@ -19,15 +26,21 @@ public:
 
 int main()
 {
-	base* bptr;
 	derived d;
-	bptr = &d;
-
+	d.a = 10;
+	base& bptr = d;
+	derived e;
+	e.a = 20;
+	cout << "addresses " <<" D : " <<  &d << " " <<" E : " << &e <<" " <<" BPTR : " << &bptr << endl;
+	cout << "A : " << bptr.a << endl;
+	bptr = e;
+	cout << "addresses " <<" D : " <<  &d << " " <<" E : " << &e <<" " <<" BPTR : " << &bptr << endl;
+	cout << "A : " << bptr.a <<" " << d.a <<  endl;
 	// Virtual function - binding at runtime
-	bptr->print();
+	bptr.print();
 
 	// Non-virtual function, binding at compile time
-	bptr->show();
+	bptr.show();
 
 	return 0;
 }

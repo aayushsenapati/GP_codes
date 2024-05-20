@@ -8,7 +8,14 @@ class Largest
 	int a,b,m;
 	public:
 		void set_data();
-		friend void find_max(Largest);	
+		friend void find_max(Largest t) {
+	if(t.a>t.b)
+		t.m=t.a;
+	else
+		t.m=t.b;
+		
+		cout<<"Maximum Number is\t"<<t.m;
+}
 };
 
 void Largest::set_data()
@@ -19,20 +26,21 @@ void Largest::set_data()
 	cin>>b;
 }
 
-void find_max(Largest t)
-{
-	if(t.a>t.b)
-		t.m=t.a;
-	else
-		t.m=t.b;
+// void find_max(Largest t)
+// {
+// 	if(t.a>t.b)
+// 		t.m=t.a;
+// 	else
+// 		t.m=t.b;
 		
-		cout<<"Maximum Number is\t"<<t.m;
-}
+// 		cout<<"Maximum Number is\t"<<t.m;
+// }
 
 int main()
 {
 	Largest l;
 	l.set_data();
 	find_max(l);
+	cout << endl;
 	return 0;
 }

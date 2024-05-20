@@ -1,14 +1,19 @@
 #include <cstdio>
 #include <cassert>
+#include <iostream>
 
-template<class...A> void func1(A...arg)
+using namespace std;
+
+template<class...A> void func1(int a1, int a2, A...arg)
 {
+    cout << "Func1 in templatized " << endl;
     assert(false);
 }
 
-void func1(int a1, int a2, int a3, int a4, int a5, int a6)
+template<typename... T>
+void func1(int a1, T... args)
 {
-    printf("call with(%d,%d,%d,%d,%d,%d)\n",a1,a2,a3,a4,a5,a6);
+    printf("call with(%d,%d,%d,%d,%d,%d)\n",a1, args...);
 }
 
 template<class...A> int func(A...args)

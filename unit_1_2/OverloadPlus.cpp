@@ -15,15 +15,24 @@ public:
 
 	// This is automatically called when '+' is used with
 	// two Complex objects
-	Complex operator+(Complex const& obj)
-	{
-		Complex res;
-		res.real = real + obj.real;
-		res.imag = imag + obj.imag;
-		return res;
-	}
+	// Complex operator+(Complex const& obj)
+	// {
+	// 	Complex res;
+	// 	res.real = real + obj.real;
+	// 	res.imag = imag + obj.imag;
+	// 	return res;
+	// }
+
 	void print() { cout << real << " + i" << imag << '\n'; }
 };
+
+Complex operator+(Complex const& obj1, Complex const& obj2)
+	{
+		Complex res;
+		res.real = obj1.real + obj2.real;
+		res.imag = imag + obj2.imag;
+		return res;
+	}
 
 int main()
 {

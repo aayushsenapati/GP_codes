@@ -1,75 +1,67 @@
-// C++ program to illustrate the above conversion
+// C++ program to illustrate the type-conversion
 #include <bits/stdc++.h>
 using namespace std;
 
-// Tie Class
+// Time Class
 class Time {
-	int hrs, mins;
+	int hour;
+	int mins;
+	int* p;
 
 public:
-	// Constructor
-	Time(int, int);
-
-	// Casting operator
-	operator int();
-
-	// Destructor
-	~Time()
+	// Default Constructor
+	Time()
 	{
-		cout << "Destructor is called."
-			<< endl;
+		p = new int;
+		*p = 1234;
+		hour = 0;
+		mins = 0;
+	}
+
+	// Parameterized Constructor
+	Time(int t)
+	{
+		cout << "Conversion happening" << endl;
+		hour = t / 60;
+		mins = t % 60;
+	}
+
+	Time& operator=(const Time& a) {
+		cout << "assigning = " << a.hour <<":" <<a.mins << endl;
+		hour = 69;
+		mins = 420;
+		return *this;
+	}
+ 
+  	Time(const Time& t) {
+      cout << "Test copy" << endl;
+    }
+	
+    operator int(){ 
+    	return hour *60 + mins;
+    }
+
+	// Function to print the value of class variables
+	void Display()
+	{
+		cout << "Time = " << hour << " hrs and " 
+				<< mins << " mins\n";
 	}
 };
 
-// Function that assigns value to the member variable of the class
-Time::Time(int a, int b)
-{
-	hrs = a;
-	mins = b;
-}
 
-// int() operator is used for Data conversion of class to primitive
-Time::operator int()
-{
-	cout << "Conversion of Class" << " Type to Primitive Type"
-		<< endl;
 
-	return (hrs * 60 + mins);
-}
-
-// Function performs type conversion from the Time class type object
-// to int data type
-void TypeConversion(int hour, int mins)
-{
-	int duration;
-
-	// Create Time Class object
-	Time t(hour, mins);
-
-	// Conversion OR duration = (int)t
-	duration = t;
-	cout << "Total Minutes are " << duration << endl;
-
-	// Conversion from Class type to Primitive type
-	cout << "2nd method operator" << " overloading " << endl;
-
-	duration = t.operator int();
-
-	cout << "Total Minutes are " << duration << endl;
-
-	return;
-}
-
-// The main program
 int main()
 {
-	// Input value
-	int hour, mins;
-	hour = 2;
-	mins = 20;
+	// Object of Time class
+	Time T1;
+	int dur = 95;
 
-	// Function call to illustrate type conversion
-	TypeConversion(hour, mins);
+	// Conversion of int type to class type
+	T1 = dur;
+	//T1.operator=(Time(dur));
+    int dur2 = T1;
+	T1.Display();
 
 	return 0;
 }

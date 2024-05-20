@@ -4,7 +4,6 @@
 using namespace std;
 
 // forward declaration
-class ClassB;
 
 class ClassA 
 {

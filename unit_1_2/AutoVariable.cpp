@@ -2,10 +2,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+auto n() {return 0;}
 int main()
 {
    // automatic variable
-   auto b = 10;
+   auto b = n();
    // auto b;
    auto fl = 3.24;
 
